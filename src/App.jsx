@@ -1,16 +1,9 @@
 import React from 'react';
 import { VideoInput } from './components/VideoInput';
+import { Logs } from './components/Logs';
 import './styles/App.scss';
 
 function App() {
-  // const violationItems = [
-  //   { violation_time: '2024-09-21T13:20:52.303Z', violation_type: 'Helmet', screenshot: 'string' },
-  //   { violation_time: '2024-09-21T13:20:52.303Z', violation_type: 'Helmet', screenshot: 'string' },
-  //   { violation_time: '2024-09-21T13:20:52.303Z', violation_type: 'Helmet', screenshot: 'string' },
-  //   { violation_time: '2024-09-21T13:20:52.303Z', violation_type: 'Helmet', screenshot: 'string' },
-  //   { violation_time: '2024-09-21T13:20:52.303Z', violation_type: 'Helmet', screenshot: 'string' },
-  // ];
-
   return (
     <>
       <header className="header">
@@ -40,12 +33,8 @@ function App() {
         <h1>Безопасность на роботизированном участке</h1>
       </header>
       <div className="content">
-        <VideoInput />
-        {/* <VideoList
-          items={items}
-          handlerWatchLogs={handlerWatchLogs}
-          violationItems={violationItems}
-        /> */}
+        {/* <VideoInput /> */}
+        <Logs />
       </div>
     </>
   );
