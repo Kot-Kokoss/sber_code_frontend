@@ -13,6 +13,14 @@ export const Log = ({ violation_time, violation_type }) => {
       status: 'Helmet',
       title: 'Нет каски',
     },
+    {
+      status: 'opened_door',
+      title: 'Дверь открыта во время работы',
+    },
+    {
+      status: 'working_robot',
+      title: 'Рабочие находятся в зоне работающего робота',
+    },
   ];
 
   const violation_info = vilation__names.find((violation) => violation.status === violation_type);
@@ -34,7 +42,7 @@ export const Log = ({ violation_time, violation_type }) => {
   return (
     <li className={styles.item} key={violation_time}>
       <div className={styles.info}>
-        <div>Тип нарушения: {violation_info.title}</div>
+        <div className={styles.type}>Тип нарушения: {violation_info.title}</div>
         <div>Время нарушения: {formattedDate}</div>
         <div className={styles.imgBtn}>
           Изображение

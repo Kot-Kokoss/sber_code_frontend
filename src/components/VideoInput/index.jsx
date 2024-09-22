@@ -4,6 +4,7 @@ import styles from './VideoInput.module.scss';
 
 export const VideoInput = () => {
   const [videoFile, setVideoFile] = React.useState(null);
+  const [isLoading, setIsLoading] = React.useState(false);
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -15,6 +16,7 @@ export const VideoInput = () => {
     formData.append('video', file);
 
     try {
+      setIsLoading(true);
       const response = await axios.post('URL_ВАШЕГО_БЭКЕНДА/upload', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
@@ -23,12 +25,13 @@ export const VideoInput = () => {
       console.log('Успех:', response.data);
     } catch (error) {
       console.error('Ошибка:', error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
   const handleButtonClick = () => {
     if (videoFile) {
-      alert('файл отправлены');
       uploadFile(videoFile);
     } else {
       document.getElementById('videoUpload').click();
@@ -48,9 +51,10 @@ export const VideoInput = () => {
         style={{ display: 'none' }}
         onChange={handleFileChange}
       />
-      <button className={styles.button} onClick={handleButtonClick}>
-        {videoFile ? 'Отправить видео' : 'Выбрать видео'}
+      <button className={styles.button} onClick={handleButtonClick} disabled={isLoading}>
+        {isLoading ? 'Загрузка' : videoFile ? 'Отправить видео' : 'Выбрать видео'}
       </button>
+      {isLoading && <div className={styles.spinner}></div>}
     </div>
   );
 };

@@ -33,8 +33,8 @@ function App() {
         <h1>Безопасность на роботизированном участке</h1>
       </header>
       <div className="content">
-        {/* <VideoInput /> */}
-        <Logs />
+        <VideoInput />
+        {/* <Logs /> */}
       </div>
     </>
   );
