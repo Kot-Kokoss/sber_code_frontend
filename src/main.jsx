@@ -1,9 +1,20 @@
-import { StrictMode } from 'react';
+import React from 'react'; // Исправленный импорт
 import { createRoot } from 'react-dom/client';
 import App from './App.jsx';
 
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
+const Context = React.createContext();
+
+const Provider = ({ children }) => {
+  const [value, setValue] = React.useState();
+
+  return <Context.Provider value={{ value, setValue }}>{children}</Context.Provider>; // Закрывающая фигурная скобка добавлена
+};
+
+const root = createRoot(document.getElementById('root')); // Создаем корень
+root.render(
+  <Provider>
     <App />
-  </StrictMode>,
+  </Provider>,
 );
+
+export default Context;

@@ -10,7 +10,7 @@ export const Log = ({ violation_time, violation_type }) => {
 
   const vilation__names = [
     {
-      status: 'Helmet',
+      status: 'helmet',
       title: 'Нет каски',
     },
     {

@@ -2,8 +2,11 @@ import React from 'react';
 import { VideoInput } from './components/VideoInput';
 import { Logs } from './components/Logs';
 import './styles/App.scss';
+import Context from './main';
 
 function App() {
+  const { value } = React.useContext(Context);
+
   return (
     <>
       <header className="header">
@@ -32,10 +35,7 @@ function App() {
         </svg>
         <h1>Безопасность на роботизированном участке</h1>
       </header>
-      <div className="content">
-        <VideoInput />
-        {/* <Logs /> */}
-      </div>
+      <div className="content">{value ? <Logs /> : <VideoInput />}</div>
     </>
   );
 }

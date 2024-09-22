@@ -2,7 +2,10 @@ import React from 'react';
 import axios from 'axios';
 import styles from './VideoInput.module.scss';
 
+import Context from '../../main';
+
 export const VideoInput = () => {
+  const { setValue } = React.useContext(Context);
   const [videoFile, setVideoFile] = React.useState(null);
   const [isLoading, setIsLoading] = React.useState(false);
 
@@ -23,6 +26,7 @@ export const VideoInput = () => {
         },
       });
       console.log('Успех:', response.data);
+      setValue(response.data);
     } catch (error) {
       console.error('Ошибка:', error);
     } finally {
