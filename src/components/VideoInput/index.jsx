@@ -20,7 +20,7 @@ export const VideoInput = () => {
 
     try {
       setIsLoading(true);
-      const response = await axios.post('URL_ВАШЕГО_БЭКЕНДА/upload', formData, {
+      const response = await axios.post('http://localhost:5000/upload', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
